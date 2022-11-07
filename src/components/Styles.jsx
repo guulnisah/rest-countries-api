@@ -1,4 +1,25 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+
+export const appTheme = {
+  dark: {
+    body: "#202C36",
+    highlight: "#2B3844",
+    text: "#FFF"
+  },
+  light: {
+    body: "#FAFAFA",
+    highlight: "#FFF",
+    text: "#111517"
+  }
+}
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${({ theme }) => (theme.body)};
+    font-family: 'Nunito Sans', sans-serif;
+    transition: all 0.2s ease;
+  }
+`
 
 export const Container = styled.main`
     max-width: 90%;
@@ -86,7 +107,7 @@ export const SettingsContainer = styled.div`
     font-size: 0.875rem;
     line-height: 1.43;
     color: ${({ theme }) => (theme.text)};
-    background-image: url('../public/search.svg');
+    background-image: url('../../public/search.svg');
     background-size: 1.25rem;
     background-repeat: no-repeat;
     background-position: 32px 19px;
