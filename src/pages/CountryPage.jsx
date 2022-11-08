@@ -28,7 +28,7 @@ export default function CountryPage() {
             return (
                 <Link key={nanoid()} to={`/countries/${elem}`} >
                     <span className='borders'>
-                        {/*API gives bordered countries as cca3 code
+                        {/*API gives bordering countries as cca3 code
                     so we need to convert it*/}
                         {getFullName(elem)}
                     </span>

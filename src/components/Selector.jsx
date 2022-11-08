@@ -63,7 +63,7 @@ const DropDownList = styled.ul`
 `;
 
 
-export default function Selector({ isDarkMode, selectedRegion, setSelectedRegion }) {
+export default function Selector({ selectedRegion, setSelectedRegion }) {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggling = () => setIsOpen(!isOpen);
@@ -82,7 +82,7 @@ export default function Selector({ isDarkMode, selectedRegion, setSelectedRegion
     });
 
     return (
-        <DropDownContainer isDarkMode={isDarkMode}>
+        <DropDownContainer>
             <div onClick={toggling}>
                 {selectedRegion || "Filter by Region"}
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +90,7 @@ export default function Selector({ isDarkMode, selectedRegion, setSelectedRegion
                 </svg>
             </div>
             {isOpen && (
-                <DropDownList isDarkMode={isDarkMode}>
+                <DropDownList>
                     {options}
                 </DropDownList>
             )}
