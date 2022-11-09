@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from 'styled-components'
-
 export const appTheme = {
   dark: {
     body: "#202C36",
@@ -24,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.main`
     max-width: 90%;
     margin: 0 auto;
+    padding-bottom: 100px;
 `
 
 export const Header = styled.header`
@@ -98,7 +98,7 @@ export const SettingsContainer = styled.div`
   display: flex;
   input {
     border: none;
-    width: 45%;
+    width: 35%;
     padding: 1.125rem;
     padding-left: 74px;
     background-color: ${({ theme }) => (theme.highlight)};
@@ -107,13 +107,19 @@ export const SettingsContainer = styled.div`
     font-size: 0.875rem;
     line-height: 1.43;
     color: ${({ theme }) => (theme.text)};
-    background-image: url('../../public/search.svg');
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.5 11H11.7L11.4 10.7C12.4 9.6 13 8.1 13 6.5C13 2.9 10.1 0 6.5 0C2.9 0 0 2.9 0 6.5C0 10.1 2.9 13 6.5 13C8.1 13 9.6 12.4 10.7 11.4L11 11.7V12.5L16 17.5L17.5 16L12.5 11ZM6.5 11C4 11 2 9 2 6.5C2 4 4 2 6.5 2C9 2 11 4 11 6.5C11 9 9 11 6.5 11Z' fill='%23848484'/%3E%3C/svg%3E");
     background-size: 1.25rem;
     background-repeat: no-repeat;
     background-position: 32px 19px;
     &:focus {
         outline: none;
         box-shadow: 0px 0px 2px #fff;
+    }
+  }
+  
+  @media (max-width: 1000px) {
+    input {
+      width: 50%;
     }
   }
   
@@ -148,7 +154,15 @@ export const CountriesContainer = styled.section`
   }
   
   @media (min-width: 1400px) {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  @media (min-width: 1600px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  @media (min-width: 1800px) {
+    grid-template-columns: repeat(7, 1fr);
   }
 `
 
