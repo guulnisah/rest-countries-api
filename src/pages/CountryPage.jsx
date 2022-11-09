@@ -9,28 +9,32 @@ export default function CountryPage() {
     const [country, setCountry] = useState()
     const { id } = useParams()
     const navigate = useNavigate()
-
     useEffect(() => {
-        fetch(`https://restcountries.com/v3.1/alpha/${id}`)
+        fetch(`https://restcountries.com/v3.1/name/${id}?fullText=true&fields=name,population,region,subregion,tld,currencies,languages,borders,flags`)
             .then(res => res.json())
             .then(data => {
                 setCountry(data[0])
+                console.log(data[0])
             })
     }, [])
 
     const { name, population, region, subregion, capital, tld, currencies, languages, borders, flags } = country ? country : {}
     const { nativeName } = name ? name : {}
-    const lang = nativeName ? Object.keys(nativeName)[0] : ''
-    const curr = currencies ? Object.keys(currencies)[0].toUpperCase() : ''
+    const lang = nativeName && Object.keys(nativeName)[0]
+    const lang2 = languages && Object.keys(languages).length > 1 && Object.keys(languages)[1]
+    const lang3 = languages && Object.keys(languages).length > 2 && Object.keys(languages)[2]
+    const curr = currencies && Object.keys(currencies)[0].toUpperCase()
+
 
     const borderingCountries = borders ?
         borders.map(elem => {
+            const commonName = getFullName(elem)
             return (
-                <Link key={nanoid()} to={`/countries/${elem}`} >
+                <Link reloadDocument key={nanoid()} to={`/countries/${commonName.toLowerCase()}`} >
                     <span className='borders'>
                         {/*API gives bordering countries as cca3 code
                     so we need to convert it*/}
-                        {getFullName(elem)}
+                        {commonName}
                     </span>
                 </Link >
             )
@@ -64,10 +68,14 @@ export default function CountryPage() {
                                 <div>
                                     <p>Top Level Domain: <span>{tld}</span></p>
                                     <p>Currencies: <span>{currencies[curr].name}</span></p>
-                                    <p>Languages: <span>{languages[lang]}</span></p>
+                                    <p>Languages: <span>
+                                        {languages[lang]}
+                                        {Object.keys(languages).length > 1 && ', ' + languages[lang2]}
+                                        {Object.keys(languages).length > 2 && ', ' + languages[lang3]}
+                                    </span></p>
                                 </div>
                             </div>
-                            {borders ?
+                            {borders.length > 0 ?
                                 <p>Border Countries: {borderingCountries}</p> :
                                 <p>No Bordering Countries</p>
                             }
