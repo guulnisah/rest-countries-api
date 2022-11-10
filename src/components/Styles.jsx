@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
+
 export const appTheme = {
   dark: {
     body: "#202C36",
@@ -21,9 +22,9 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Container = styled.main`
-    max-width: 90%;
-    margin: 0 auto;
-    padding-bottom: 100px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding-bottom: 100px;
 `
 
 export const Header = styled.header`
@@ -59,37 +60,37 @@ export const Header = styled.header`
         }
       }
     }
-}
+  }
 `
 
 export const Button = styled.button`
-    all: unset;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: ${({ theme }) => (theme.text)};
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: ${({ theme }) => (theme.text)};
+  
+  path {
+      stroke: ${({ theme }) => (theme.text)};
+      fill: ${({ theme }) => (theme.text)};
+  }
+  
+  @media (max-width: 400px) {
+    font-size: 12px;
     
-    path {
-        stroke: ${({ theme }) => (theme.text)};
-        fill: ${({ theme }) => (theme.text)};
+    svg {
+      width: 1rem;
     }
-    
-    @media (max-width: 400px) {
-      font-size: 12px;
-      
-      svg {
-        width: 1rem;
-      }
-    }
+  }
 `
 
 export const BackButton = styled(Button)`
-    padding: 0.375rem 1.5rem;
-    margin-bottom: 5rem;
-    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.293139);
-    border-radius: 6px;
-    background-color: ${({ theme }) => (theme.highlight)};
+  padding: 0.375rem 1.5rem;
+  margin-bottom: 5rem;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.293139);
+  border-radius: 6px;
+  background-color: ${({ theme }) => (theme.highlight)};
 `
 
 export const SettingsContainer = styled.div`
@@ -188,100 +189,107 @@ export const Country = styled.article`
 `
 
 export const TextContainer = styled.div`
-    padding: 24px 0 46px 24px;
-    color: ${({ theme }) => (theme.text)};
+  padding: 24px 0 46px 24px;
+  color: ${({ theme }) => (theme.text)};
 
-    h2 {
-        margin-bottom: 1rem;
-        font-weight: 800;
-        font-size: 1.125rem;
-        line-height: 1.44;
-    }
-    
-    p {
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-        font-size: 0.875rem;
-        line-height: 120%;
-    }
+  h2 {
+    margin-bottom: 1rem;
+    font-weight: 800;
+    font-size: 1.125rem;
+    line-height: 1.44;
+}
 
-    span {
-        font-weight: 300;
-        font-size: 0.875rem;
-        line-height: 1.14;
-    }
+  p {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 120%;
+}
+
+  span {
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.14;
+  }
+`
+
+export const ErrorText = styled.h2`
+  width: 100%;
+  color: ${({ theme }) => (theme.text)};
+  font-size: 1.5rem;
+  font-weight: 800;
 `
 
 export const CountryDetails = styled(TextContainer)`
-    padding: 0;
-    width: 45%;
-    
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.4rem;
-        }
-        
-        p {
-            margin-bottom: 0;
-            font-size: 1rem;
-            line-height: 2;
-        }
-        
-        span {
-            font-size: 1rem;
-            line-height: 2;
-        }
-        
-        a {
-            all: unset;
-            cursor: pointer;
-        }
-        
-        .borders {
-            display: inline-block;
-            background-color: ${({ theme }) => (theme.highlight)};
-            box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.104931);
-            border-radius: 2px;
-            margin-right: 0.625rem;
-            margin-bottom: 0.625rem;
-            padding: 0.3rem 1.6rem;
-        }
-        
-    @media screen and (max-width: 600px) {
-        width: 100%;
-    }
+  padding: 0;
+  width: 45%;
+  
+      h2 {
+          font-size: 2rem;
+          margin-bottom: 1.4rem;
+      }
+      
+      p {
+          margin-bottom: 0;
+          font-size: 1rem;
+          line-height: 2;
+      }
+      
+      span {
+          font-size: 1rem;
+          line-height: 2;
+      }
+      
+      a {
+          all: unset;
+          cursor: pointer;
+      }
+      
+      .borders {
+          display: inline-block;
+          background-color: ${({ theme }) => (theme.highlight)};
+          box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.104931);
+          border-radius: 2px;
+          margin-right: 0.625rem;
+          margin-bottom: 0.625rem;
+          padding: 0.3rem 1.6rem;
+      }
+      
+  @media screen and (max-width: 600px) {
+      width: 100%;
+  }
 `
 
 export const CountryInformation = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-    img {
-        width: 45%;
-    }
-    
-    .flex {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        margin-bottom: 4rem;        
-    }
-    
-    @media screen and (max-width: 1034px) {
-        .flex {
-            flex-direction: column;
-            gap: 2rem;
-        }
-    }
-    
-    @media screen and (max-width: 600px) {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2.75rem;
-        
-        img {
-            width: 100%;
-        }
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  img {
+      width: 45%;
+  }
+  
+  .flex {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 4rem;        
+  }
+  
+  @media screen and (max-width: 1034px) {
+      .flex {
+          flex-direction: column;
+          gap: 2rem;
+      }
+  }
+  
+  @media screen and (max-width: 600px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2.75rem;
+      
+      img {
+          width: 100%;
+      }
+  }
 `

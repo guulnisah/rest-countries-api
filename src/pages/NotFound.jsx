@@ -1,9 +1,9 @@
-import { Container } from '../components/Styles'
+import { Container, ErrorText } from '../components/Styles'
 
 export default function NotFound() {
     return (
         <Container>
-            <h2>Page doesn't exist...</h2>
+            <ErrorText>Page doesn't exist...</ErrorText>
         </Container>
     )
 }

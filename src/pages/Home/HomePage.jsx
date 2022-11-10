@@ -2,7 +2,7 @@ import Skeleton from '../../components/Skeleton'
 import Selector from '../../components/Selector'
 import { useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
-import { Container, SettingsContainer, CountriesContainer, TextContainer, Country } from '../../components/Styles'
+import { Container, SettingsContainer, CountriesContainer, TextContainer, Country, ErrorText } from '../../components/Styles'
 import { Link } from 'react-router-dom'
 import useCountries from '../../utils/useCountries'
 
@@ -36,7 +36,7 @@ export default function HomePage() {
 
     function displayedCountries(arr) {
         if (!arr) { return; }
-        if (typeof arr === 'string') { return <h1>{arr}</h1> }
+        if (typeof arr === 'string') { return <ErrorText>{arr}</ErrorText> }
         const countries = arr
             .sort((a, b) => a.name.common.localeCompare(b.name.common))
             .map(({ name, flags, population, region, capital }) => {
@@ -63,7 +63,7 @@ export default function HomePage() {
                 <input type="text" placeholder="Search for a country..." onChange={handleSearch} />
                 <Selector selectedRegion={selectedRegion} setSelectedRegion={setSelectedRegion} />
             </SettingsContainer>
-            {error && <h2>{error}</h2>}
+            {error && <ErrorText>{error}</ErrorText>}
             {
                 loading ? <Skeleton width={"262px"} height={"363px"} number={9} /> :
                     <CountriesContainer>

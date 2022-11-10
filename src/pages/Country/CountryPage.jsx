@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { nanoid } from 'nanoid'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { BackButton, Container, CountryDetails, CountryInformation } from '../../components/Styles'
+import { BackButton, Container, CountryDetails, CountryInformation, ErrorText } from '../../components/Styles'
 import getFullName from '../../utils/cca3ToName.js'
 import Skeleton from '../../components/Skeleton'
 import useCountries from '../../utils/useCountries'
@@ -62,7 +62,7 @@ export default function CountryPage() {
                     <span>Back</span>
                 </BackButton>
 
-                {error && <h2>{error}</h2>}
+                {error && <ErrorText>{error}</ErrorText>}
                 {!country && loading && <Skeleton width={"100%"} height={"300px"} number={1} />}
 
                 {/* Display country info if object isn't empty */}
