@@ -13,11 +13,12 @@ export default function useCountries(url) {
                     return res.json();
                 }
                 setLoading(false)
-                throw new Error("Couldn't find what you were looking for...")
+                throw new Error("Something went wrong...")
             })
             .then(data => {
                 setData(data)
                 setLoading(false)
+                setError('')
             })
             .catch((error) => {
                 setError(error.message)
